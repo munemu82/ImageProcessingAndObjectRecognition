@@ -1,0 +1,9 @@
+C:\Users\admin\Documents\MastersThesis\ImageProcessingAndObjectRecognition\processed_images\Zebra\Zebra10.jpg
+C:\Users\admin\Documents\MastersThesis\ImageProcessingAndObjectRecognition\processed_images\Zebra\Zebra15.jpg
+C:\Users\admin\Documents\MastersThesis\ImageProcessingAndObjectRecognition\processed_images\Buffalo\Buffalo10.jpg
+C:\Users\admin\Documents\MastersThesis\ImageProcessingAndObjectRecognition\processed_images\Elephants\Elephants8.jpg
+C:\Users\admin\Documents\MastersThesis\ImageProcessingAndObjectRecognition\processed_images\Buffalo\Buffalo12.jpg
+C:\Users\admin\Documents\MastersThesis\ImageProcessingAndObjectRecognition\processed_images\Zebra\Zebra8.jpg
+C:\Users\admin\Documents\MastersThesis\ImageProcessingAndObjectRecognition\processed_images\Elephants\Elephants3.jpg
+C:\Users\admin\Documents\MastersThesis\ImageProcessingAndObjectRecognition\processed_images\Elephants\Elephants7.jpg
+C:\Users\admin\Documents\MastersThesis\ImageProcessingAndObjectRecognition\processed_images\Zebra\Zebra14.jpg
