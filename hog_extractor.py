@@ -26,7 +26,7 @@ data_obj = ImageDataPrep()
 
 # Creating Image Array from numpy array to standard array - using the helper class object
 def create_array(image_path):
-	image = cv2.imread(image_path)
+	image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
 	if data_obj.is_grey_scale(image_path) == False:
 		gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 		image_array = np.asarray(gray_image,dtype=float)
