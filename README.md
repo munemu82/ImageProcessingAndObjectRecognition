@@ -9,5 +9,5 @@ Further implementations including performing transfer learning using pre-trained
 1) Required library packages and modules
 2) System requirements
 3) Run the scripts 
- 3.1 The script is the data_prep.py:
+ 3.1)  The script is the data_prep.py:
  python data_prep.py --image_path [full path to the directory if images folders each representing a class/object] --image_final_path [full path to directory where you want to store final processed images]
