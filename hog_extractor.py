@@ -1,13 +1,11 @@
 # IMPORT REQUIRED LIBRARIES AND MODULES
-import os, sys
-import matplotlib.pyplot as plt
-import matplotlib.image as iread
 import cv2
 from PIL import Image
 import numpy as np
 from image_processing_helpers import *
 
-#USER-DEFINE REQUIRED VARIABLES
+
+# USER-DEFINE REQUIRED VARIABLES
 gamma_val = 3.5             # Gamma values < 1 will shift the image towards the darker end of the spectrum while gamma values > 1 will make the image appear lighter.
                             # A gamma value of G=1 will have no affect on the input image
 pixels_per_cell = [2, 2]    # Was 8x8

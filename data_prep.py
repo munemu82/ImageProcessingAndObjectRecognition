@@ -1,11 +1,11 @@
 # Import required libraries and modules
-from glob import glob  # navigating through directory files
 import argparse  # for defining command arguments
 import os
 from random import shuffle
-from sklearn.model_selection import train_test_split
-import numpy as np
 from image_processing_helpers import *
+from datetime import datetime
+
+startTime = datetime.now()
 
 # Define required variables
 all_images_list = []
@@ -17,6 +17,7 @@ number_of_classes = 0
 train_ratio = 0.8
 img_h_size = 128
 img_w_size = 128
+class_names = []
 
 # Initialize and setting up command arguments# parse cmd args
 parser = argparse.ArgumentParser(
@@ -60,6 +61,9 @@ if os.path.isdir(image_path) == True or os.path.isdir(os.getcwd() + "/" + image_
             for file in os.listdir(obj_dir_path):
                 # print(os.path.abspath(subdir+'\\'+file))
                 class_label = os.path.abspath(subdir + '\\' + file).split('\\')[-2]
+
+                # Add the class label to the list of class names
+                class_names.append(class_label)
 
                 # PERFORM IMAGE PROCESSING
                 print(os.path.abspath(subdir + '\\' + file))
@@ -105,9 +109,15 @@ test_images_list = all_images_list[int(len(all_images_list) * (train_ratio + 0.0
 train_images_labels = data_prep_obj.create_class_labels(train_images_list)
 test_images_labels = data_prep_obj.create_class_labels(test_images_list)
 
+# Convert the list to a unique list using set
+class_names = set(class_names)
+
 # Save image files
 data_prep_obj.save_list('../train_list.txt', train_images_list)
 data_prep_obj.save_list('../test_list.txt', test_images_list)
 data_prep_obj.save_list('../train_labels.txt', train_images_labels)
 data_prep_obj.save_list('../test_labels.txt', test_images_labels)
+data_prep_obj.save_list('../class_names.txt', class_names)
 print('--------------Image processing and data preparation completed successfully----------------------------------')
+est_time = datetime.now() - startTime
+print('It took about ' + est_time +' seconds' )

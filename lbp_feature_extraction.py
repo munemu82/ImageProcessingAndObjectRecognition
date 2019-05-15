@@ -22,6 +22,7 @@ labels = []
 path = 'C:/Users/admin/Documents/MastersThesis/ImageProcessingAndObjectRecognition/processed_images/Zebra'
 # loop over the training images
 for imagePath in paths.list_images(path):
+    print(imagePath)
     # load the image, convert it to grayscale, and describe it
     image = cv2.imread(imagePath, cv2.IMREAD_GRAYSCALE)
     print(image.shape)

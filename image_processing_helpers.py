@@ -6,6 +6,7 @@ from sklearn.cluster import KMeans
 from sklearn.svm import SVC
 from sklearn.preprocessing import StandardScaler
 from PIL import Image
+from sklearn.preprocessing import LabelEncoder
 
 
 class ImageDataPrep:
@@ -13,6 +14,7 @@ class ImageDataPrep:
         # self.sift_object = cv2.xfeatures2d.SIFT_create()
         self.obj_class_labels = []
         self.processed_img_folder = ''  # Define the final processed image folder destination path
+        self.label_encoder = LabelEncoder()
 
     # Check if image is grayscale
     def is_grey_scale(self, img_path):
@@ -84,11 +86,40 @@ class ImageDataPrep:
                 resized_img = cv2.resize(image, (dim_h, dim_w), interpolation=cv2.INTER_AREA)
                 return resized_img
 
-
     def save_final_image(self, full_image_pathname, processed_img):
         print("Saving the processed image to the output folder ---------")
         # Save the image the final output folder
         cv2.imwrite(full_image_pathname, processed_img)
+
+    def labels_to_class_num(self, labels_file):
+        # Read the file containing labels
+        class_num_labels = []
+        with open(labels_file) as f:
+            lines = f.readlines()
+            for line in lines:
+                line = line.replace('\n', '')
+                class_num_labels.append(line)
+        class_num_labels = self.label_encoder.fit_transform(class_num_labels)
+        return class_num_labels
+
+    def get_unique_class_names(self, file):
+        class_names = []
+        with open(file) as f:
+            lines = f.readlines()
+            for line in lines:
+                line = line.replace('\n', '')
+                class_names.append(line)
+
+        unique_names = set(class_names)
+        return list(unique_names)
+
+    def class_num_to_labels(self, num_labels, index=None):
+        if index == None:
+            class_cat_labels = self.label_encoder.inverse_transform(num_labels)
+            return class_cat_labels
+        else:
+            class_cat_labels = self.label_encoder.inverse_transform(num_labels)[index]
+            return class_cat_labels
 
 
 class ImageFeatureExtractor:
