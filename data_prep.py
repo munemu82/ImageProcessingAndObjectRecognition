@@ -120,4 +120,7 @@ data_prep_obj.save_list('../test_labels.txt', test_images_labels)
 data_prep_obj.save_list('../class_names.txt', class_names)
 print('--------------Image processing and data preparation completed successfully----------------------------------')
 est_time = datetime.now() - startTime
-print('It took about ' + est_time +' seconds' )
+print('It took about ' + str(est_time) +' seconds' )
+
+# python data_prep.py  --image_path C:\Users\admin\Documents\MastersThesis\ImageProcessingAndObjectRecognition\images_just_test
+# --image_final_path C:\Users\admin\Documents\MastersThesis\ImageProcessingAndObjectRecognition\processed_images

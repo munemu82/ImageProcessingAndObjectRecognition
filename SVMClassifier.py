@@ -10,12 +10,16 @@ from image_processing_helpers import *
 from datetime import datetime
 from sklearn.metrics import accuracy_score
 
+# Always good to set a seed for reproducibility
+SEED = 222
+np.random.seed(SEED)
+
 startTime = datetime.now()
 
 # train = pd.read_csv('train.csv')
-train_lbp = pd.read_csv('train_lbp_features.csv', header=None)
-test_lbp = pd.read_csv('test_lbp_features.csv', header=None)
-test = pd.read_csv('test.csv')
+train_lbp = pd.read_csv('train_hog_features.csv', header=None)
+test_lbp = pd.read_csv('test_hog_features.csv', header=None)
+test = pd.read_csv('test_hog_features.csv')
 
 data_prep_obj = ImageDataPrep()
 class_labels = data_prep_obj.labels_to_class_num('train_labels.txt')

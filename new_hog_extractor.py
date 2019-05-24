@@ -139,3 +139,30 @@ class HogFeatureExtractor:
 
         return hog_features
 
+    def extract_dense_hog(self, cell_size=(8, 8), block_stride=(8, 8), block_size=(16, 16),
+                          win_size=(256, 256), image=np.zeros([16, 16], dtype=int)):
+        nbins = 9
+        deriv_aperture = 1
+        win_sigma = 4.
+        histogram_norm_type = 0
+        L2_hys_threshold = 2.0000000000000001e-01
+        gamma_correction = 0
+        n_levels = 64
+        # Define criteria = ( type, max_iter = 10 , epsilon = 1.0 )
+        criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10, 1.0)
+        # Set flags (Just to avoid line break in the code)
+        flags = cv2.KMEANS_RANDOM_CENTERS
+
+        # HOG FEATURE EXTRACTION SETUP
+        d = cv2.HOGDescriptor(win_size, block_size, block_stride, cell_size, nbins, deriv_aperture, win_sigma,
+                              histogram_norm_type, L2_hys_threshold, gamma_correction, n_levels)
+        # COMPUTE HOG DESCRIPTOR
+        hog = d.compute(image)
+        # COMPUTE KMEANS DESCRIPTOR
+        compactness, labels, hog = cv2.kmeans(hog, 5376, None, criteria, 10,
+                                              flags)  # run k-means algorithms to select important features
+        hog_feature_vec = hog.ravel()       # flatten the array to create the final feature vector 1-D
+
+        return hog_feature_vec
+
+
